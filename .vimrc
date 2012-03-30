@@ -60,6 +60,8 @@ if has("gui_running")
     " Set colorscheme
     set background=dark
     let g:solarized_italic=0
+    let g:solarized_hitrail=1
+
     "let g:solarized_contrast="high"
     colorscheme solarized
 
@@ -87,21 +89,19 @@ imap <C-space> <C-x><C-o>
 " save
 map <C-s> :w<cr>
 imap <C-s> <Esc>:w<cr>a
-" vertical split tree explorer!
-"map te :33vsplit<cr>:set nonumber<cr>:VTreeExplore<cr>
-"map te :VSTreeExplore<cr>
-"map te :VSTreeExplore<cr>:set nonumber<cr><C-w><C-w>
+" vertical split tree explorer
 map tt :NERDTreeToggle<cr>
-
-"map tt :VSTreeExplore<cr>:set nonumber<cr>:TlistOpen<cr><C-w>R<C-w><C-w><C-w><C-w>
 
 " Fix Fortran editing
 unlet! fortran_fixed_source
 let fortran_free_source=1
 
-let g:treeExplVertical = 1
-let g:treeExplDirSort = 1
-let g:treeExplWinSize = 33
-
+" Configure NERDTree
 let NERDTreeShowBookmarks = 1
 let NERDTreeIgnore = ['\.pyc$']
+
+" Tweak omni-complete
+set completeopt+=menuone
+
+" Mouse pointer never re-appears on recent Ubuntu versions =(
+set nomousehide
