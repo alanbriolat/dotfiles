@@ -1,0 +1,105 @@
+{ "name": "Fortran",
+  "scopeName": "source.fortran",
+  "fileTypes": ["f90", "F90", "f95", "F95"],
+  "patterns": [
+  {"include": "#numeric"},
+  {"include": "#string"},
+  {"include": "#intrinsic-io"},
+  {"include": "#type"},
+  {  "name": "keyword.control.fortran",
+     "match": "\\b(?i:(if|then|else|do))\\b",
+     "comment": "Control structure keywords"
+  },
+  {  "name": "keyword.operator.comparison.fortran",
+     "match": "==|/=|>=|>|<|<="
+  },
+  {  "name": "keyword.operator.arithmetic.fortran",
+     "match": "\\+|-|/|\\*"
+  },
+  {  "name": "keyword.operator.fortran",
+     "match": "=|::|,"
+  },
+  {  "name": "keyword.other.fortran",
+     "match": "\\b(?i:(end|function|subroutine|module|program|contains|pure|elemental|call|result))\\b"
+  },
+  {  "name": "keyword.other.fortran",
+     "match": "&"
+  },
+  {  "name": "keyword.other.import.fortran",
+     "match": "\\b(?i:(use|only))\\b"
+  },
+  {  "name": "keyword.other.import.fortran",
+     "match": "=>"
+  },
+  {  "name": "storage.modifier.fortran",
+     "match": "\\b(?i:(optional|parameter|pointer|allocatable|target|public|private))\\b"
+  },
+  {  "name": "comment.line.exclamation.fortran",
+     "begin": "!",
+     "end": "$\n?"
+  }
+  ],
+  "repository": {
+    "intrinsic-io": {
+      "patterns": [
+      {  "name": "support.function.io.fortran",
+         "match": "\\b(?i:(open|close|read|write|print))\\b"
+      }
+      ]
+    },
+    "intrinsic-io-parameters": {
+      "patterns": [
+      {  "name": "support.other.io.fortran",
+         "match": "\\b(?i:(unit|file|status|action|position|iostat|nml))\\b"
+      }
+      ]
+    },
+    "string": {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {"name": "punctuation.definition.string.begin.fortran"}
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {"name": "punctuation.definition.string.end.fortran"}
+      },
+      "name": "string.quoted.double.fortran",
+      "patterns": [
+      {"include": "#string-escaped"}
+      ]
+    },
+    "string-escaped": {
+      "patterns": [
+      {  "name": "constant.character.escape.fortran",
+         "match": "\\\\([\"n])"
+      }
+      ]
+    },
+    "numeric": {
+      "patterns": [
+      {  "name": "constant.numeric.fortran",
+         "match": "\\b(\\d+(\\.\\d+|))\\b"
+      }
+      ]
+    },
+    "type": {
+      "patterns": [
+      {  "name": "storage.type.fortran",
+         "match": "\\b(?i:(real|integer|logical|character))\\b"
+      },
+      {"include": "#type-intent"}
+      ]
+    },
+    "type-intent": {
+      "patterns": [
+      {  "match": "\\b(?i:(intent))\\s*\\(\\s*(in|out|inout)\\s*\\)",
+         "captures": {
+          "1": {"name": "storage.modifier.intent.fortran"},
+          "2": {"name": "storage.modifier.intent.value.fortran"}
+         }
+      }
+      ]
+    }
+  },
+  "uuid": "5f620bf4-f3df-44d3-976c-e3dcca74bc5f"
+}
