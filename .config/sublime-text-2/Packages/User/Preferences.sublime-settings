@@ -8,5 +8,9 @@
 	[
 		"Vintage"
 	],
-	"tab_completion": false
+	"tab_completion": false,
+	"highlight_line": true,
+	"translate_tabs_to_spaces": true,
+	"tab_size": 4,
+	"rulers": [80]
 }
