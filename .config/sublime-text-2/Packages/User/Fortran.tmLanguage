@@ -27,10 +27,6 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#type</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#import</string>
 		</dict>
 		<dict>
@@ -43,13 +39,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>=|::|,</string>
-			<key>name</key>
-			<string>keyword.operator.other.fortran</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\b(?i:(end|function|subroutine|module|program|contains|pure|elemental|call|result))\b</string>
+			<string>\b(?i:(end|function|subroutine|module|program|type|contains|pure|elemental|call|result))\b</string>
 			<key>name</key>
 			<string>keyword.other.fortran</string>
 		</dict>
@@ -91,6 +81,12 @@
 					<key>include</key>
 					<string>#intrinsic-function</string>
 				</dict>
+				<dict>
+					<key>match</key>
+					<string>\.(?i:(true|false))\.</string>
+					<key>name</key>
+					<string>support.constant.logical.fortran</string>
+				</dict>
 			</array>
 		</dict>
 		<key>import</key>
@@ -99,23 +95,23 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(use)\s+([a-z][a-z0-9_]*)</string>
+					<string>(?i:((use)\s+([a-z][a-z0-9_]*)))</string>
 					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.import.fortran</string>
+							<string>keyword.other.import.use.fortran</string>
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\s*,\s*(only)\s*:|)</string>
+					<string>(\s*,\s*(?i:(only))\s*:|)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.import.fortran</string>
+							<string>keyword.other.import.only.fortran</string>
 						</dict>
 					</dict>
 				</dict>
@@ -123,7 +119,7 @@
 					<key>match</key>
 					<string>=&gt;</string>
 					<key>name</key>
-					<string>keyword.other.import.fortran</string>
+					<string>keyword.other.import.as.fortran</string>
 				</dict>
 			</array>
 		</dict>
@@ -301,6 +297,23 @@
 						</dict>
 					</dict>
 					<key>match</key>
+					<string>\b(?i:(fmt))\s*(=)\s*(\*)</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.io.fortran</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.constant.io.fortran</string>
+						</dict>
+					</dict>
+					<key>match</key>
 					<string>\b(?i:(form))\s*(=)\s*("(formatted|unformatted|undefined)")</string>
 				</dict>
 				<dict>
@@ -345,9 +358,26 @@
 							<key>name</key>
 							<string>variable.language.io.fortran</string>
 						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.constant.io.fortran</string>
+						</dict>
 					</dict>
 					<key>match</key>
-					<string>\b(?i:(end|eor|err|exist|file|fmt|iolength|iostat|name|named|nml|nextrec|number|opened|rec|recl|size|unit))\s*(=)</string>
+					<string>\b(?i:(direct|formatted|read|readwrite|sequential|unformatted|write))\s*(=)\s*("(yes|no|unknown)")</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.io.fortran</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(?i:(access|action|advance|blank|delim|direct|end|eor|err|exist|file|fmt|form|formatted|iolength|iostat|name|named|nml|nextrec|number|opened|pad|position|read|readwrite|rec|recl|sequential|size|status|unformatted|unit|write))\s*(=)</string>
 				</dict>
 			</array>
 		</dict>
@@ -357,7 +387,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(\d+(\.\d+|))\b</string>
+					<string>\b(\d+(\.\d+)?([eE][-+]?\d+)?)\b</string>
 					<key>name</key>
 					<string>constant.numeric.fortran</string>
 				</dict>
@@ -390,6 +420,35 @@
 					<string>\.(not|and|or|eqv|neqv)\.</string>
 					<key>name</key>
 					<string>keyword.operator.logical.fortran</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\(/</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.array.begin.fortran</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>/\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.array.begin.fortran</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -443,9 +502,9 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(?i:(real|integer|logical|character))\b</string>
+					<string>\b(?i:(integer|real|complex|logical))\b</string>
 					<key>name</key>
-					<string>storage.type.fortran</string>
+					<string>storage.type.basic.fortran</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -453,20 +512,87 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>storage.modifier.intent.fortran</string>
+							<string>storage.type.basic.fortran</string>
 						</dict>
-						<key>2</key>
+						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>storage.modifier.intent.value.fortran</string>
+							<string>storage.modifier.length.fortran</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.fortran</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\b(?i:(intent))\s*\(\s*(in|out|inout)\s*\)</string>
+					<string>\b(?i:(character))(\s*\(\s*(?i:(len))\s*(=)\s*(\d+)\s*\))?</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.derived.fortran</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(?i:(type))\s*\(\s*(?i:([a-z][a-z0-9_]*))\)</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(?i:(intent))\s*\(</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.intent.fortran</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\s*\)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\b(in|out|inout)\b</string>
+							<key>name</key>
+							<string>support.constant.intent.fortran</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>.*?</string>
+							<key>name</key>
+							<string>invalid.illegal.intent.fortran</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(?i:(dimension))\s*\(</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.dimension.fortran</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\s*\)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?i:(optional|parameter|pointer|allocatable|target|public|private))\b</string>
+					<string>\b(?i:(allocatable|external|intrinsic|optional|parameter|pointer|private|public|save|target))\b</string>
 					<key>name</key>
 					<string>storage.modifier.fortran</string>
 				</dict>
