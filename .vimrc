@@ -61,9 +61,13 @@ if has("gui_running")
     set background=dark
     let g:solarized_italic=0
     let g:solarized_hitrail=1
-
     "let g:solarized_contrast="high"
     colorscheme solarized
+
+    " Highlight column 80 as a reminder, as long as it's supported
+    if exists('+colorcolumn')
+        set colorcolumn=80
+    endif
 
     " Bind alt+number to tab switching
     map <M-1> 1gt
