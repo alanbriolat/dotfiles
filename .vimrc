@@ -109,3 +109,5 @@ set completeopt+=menuone
 
 " Mouse pointer never re-appears on recent Ubuntu versions =(
 set nomousehide
+
+call pathogen#infect()
