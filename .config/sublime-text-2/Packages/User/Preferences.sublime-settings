@@ -1,16 +1,18 @@
 {
 	"auto_complete": false,
-	"auto_complete_commit_on_tab": true,
 	"color_scheme": "Packages/User/Tomorrow-Night.tmTheme",
 	"font_face": "Tamsyn",
 	"font_size": 8,
+	"highlight_line": true,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
+	"rulers":
+	[
+		80
+	],
 	"tab_completion": false,
-	"highlight_line": true,
-	"translate_tabs_to_spaces": true,
 	"tab_size": 4,
-	"rulers": [80]
+	"translate_tabs_to_spaces": true
 }
