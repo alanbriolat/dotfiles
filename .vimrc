@@ -102,7 +102,9 @@ let fortran_free_source=1
 
 " Configure NERDTree
 let NERDTreeShowBookmarks = 1
-let NERDTreeIgnore = ['\.pyc$']
+
+" Globally hide certain files
+set wildignore+=*.pyc,*.o,*.mod
 
 " Tweak omni-complete
 set completeopt+=menuone
