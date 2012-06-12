@@ -5,6 +5,42 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+function pretty_prompt {
+    local USE_COLOR
+    local HOST_COLOR
+    local PATH_COLOR
+
+    USE_COLOR="$1"
+    HOST_COLOR="$2"
+    PATH_COLOR="$3"
+
+    # Invert user@host colors if running as root
+    if [[ $UID -eq 0 ]]; then
+        HOST_COLOR="$HOST_COLOR;7"
+    fi
+
+    local host_attrs
+    local path_attrs
+    local clear_attrs
+
+    if [ "$USE_COLOR" = "color" ]; then
+        host_attrs="\[\e[${HOST_COLOR}m\]"
+        path_attrs="\[\e[${PATH_COLOR}m\]"
+        clear_attrs="\[\e[0m\]"
+    else
+        host_attrs=""
+        path_attrs=""
+        clear_attrs=""
+    fi
+
+    PS1="\n[${host_attrs}\u@\h${clear_attrs}:${path_attrs}\w\$(__git_ps1)${clear_attrs}]\n$ "
+
+    # If this is an xterm set the title to user@host:dir (branch)
+    case "$TERM" in
+        xterm*|rxvt*) PS1="\[\e]0;\u@\h:\w\$(__git_ps1)\a\]$PS1"
+    esac
+}
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -22,58 +58,6 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-USER_COLOUR=32
-HOST_COLOUR=32
-PATH_COLOUR=33
-
-if [ "$color_prompt" = yes ]; then
-    if [[ $UID -eq 0 ]] ; then
-        PS1="\n[\[\e[${USER_COLOUR};7m\]\u\[\e[0m\]\[\e[${HOST_COLOUR}m\]@\h\[\e[0m\]:\[\e[${PATH_COLOUR}m\]\w\$(__git_ps1)\[\e[0m\]]\n$ "
-    else
-        PS1="\n[\[\e[${USER_COLOUR}m\]\u\[\e[0m\]\[\e[${HOST_COLOUR}m\]@\h\[\e[0m\]:\[\e[${PATH_COLOUR}m\]\w\$(__git_ps1)\[\e[0m\]]\n$ "
-    fi
-
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -112,3 +96,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 export EDITOR=/usr/bin/vim
+
+# pretty prompt, uncolored - use "pretty_prompt color <host_color> <path_color>"
+# to make it prettier
+pretty_prompt
+
+# use machine-specific config
+if [ -f ~/.bashrc_local ]; then
+    . ~/.bashrc_local
+fi
