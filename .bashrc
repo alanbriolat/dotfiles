@@ -80,6 +80,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# force alias expansion to happen inside "sudo <command>"
+alias sudo='sudo '
+# loud rm so it's obvious when accidentally deleting lots of stuff...
 alias rm='rm -v'
 alias :wq='echo "lol, vim user..." ; sleep 1 ; exit'
 
