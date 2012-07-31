@@ -2,6 +2,7 @@
 set nocompatible
 
 " Pathogen is amazing!
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 " Allow backspacing over everything
