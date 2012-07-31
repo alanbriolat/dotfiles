@@ -1,6 +1,9 @@
 " Use vim settings, not vi settings
 set nocompatible
 
+" Pathogen is amazing!
+call pathogen#infect()
+
 " Allow backspacing over everything
 set backspace=indent,eol,start
 
@@ -111,5 +114,3 @@ set completeopt+=menuone
 
 " Mouse pointer never re-appears on recent Ubuntu versions =(
 set nomousehide
-
-call pathogen#infect()
