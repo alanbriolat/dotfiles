@@ -1,0 +1,2 @@
+xset +fp ~/.fonts
+[ -f ~/.xprofile_local ] && . ~/.xprofile_local
