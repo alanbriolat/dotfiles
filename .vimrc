@@ -64,7 +64,6 @@ if has("gui_running")
     set background=dark
     let g:solarized_italic=0
     let g:solarized_hitrail=1
-    "let g:solarized_contrast="high"
     colorscheme solarized
 
     " Highlight column 80 as a reminder, as long as it's supported
@@ -83,9 +82,10 @@ if has("gui_running")
     map <M-8> 8gt
     map <M-9> 9gt
 else
-    "colorscheme desert
-    "set background=dark
-    "colorscheme solarized
+    set t_Co=256
+    set background=dark
+    let g:solarized_termcolors=256
+    colorscheme solarized
 endif
 
 
