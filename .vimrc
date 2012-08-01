@@ -84,7 +84,7 @@ if has("gui_running")
     map <M-8> 8gt
     map <M-9> 9gt
 else
-    set t_Co=256
+    "set t_Co=256
     set background=dark
     let g:solarized_termcolors=256
     colorscheme solarized
