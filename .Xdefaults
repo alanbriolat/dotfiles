@@ -5,7 +5,9 @@
 URxvt.depth: 32
 URxvt.background: [85]Black
 URxvt.foreground: 15
-URxvt.fading: 20
+!URxvt.fading: 20
+URxvt.geometry: 100x30
+URxvt.iconFile: /usr/share/icons/hicolor/scalable/apps/Terminal.svg
 
 ! Tango colorscheme
 URxvt.color0: #2e2e34343636
