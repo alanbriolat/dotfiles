@@ -1,6 +1,12 @@
-URxvt.depth: 24
-URxvt.background: Black
+##############################
+# rxvt-unicode configuration #
+##############################
+
+URxvt.depth: 32
+URxvt.background: [85]Black
 URxvt.foreground: White
+
+# Tango colorscheme
 URxvt.color0: #2e2e34343636
 URxvt.color1: #cccc00000000
 URxvt.color2: #4e4e9a9a0606
@@ -17,6 +23,14 @@ URxvt.color12: #72729f9fcfcf
 URxvt.color13: #adad7f7fa8a8
 URxvt.color14: #3434e2e2e2e2
 URxvt.color15: #eeeeeeeeecec
+
 URxvt.scrollBar: false
+
+# Pretty bitmap font, fallback to TTF with very wide unicode coverage
 URxvt.font: -*-tamsyn-medium-*-*-*-14-*-*-*-*-*-*-*,xft:Code2000
 URxvt.boldFont: -*-tamsyn-bold-*-*-*-14-*-*-*-*-*-*-*,xft:Code2000:bold
+
+URxvt.perl-ext-common: default,matcher
+# Configure URL matcher: open in google-chrome when clicked with middle button
+URxvt.urlLauncher: google-chrome
+URxvt.matcher.button: 2
