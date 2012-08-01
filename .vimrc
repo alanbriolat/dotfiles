@@ -49,7 +49,8 @@ if has("gui_running")
     if has("win32")
         set guifont=Tamsyn6x11:h9:cOEM
     else
-        set guifont=Tamsyn\ 8
+        "set guifont=Tamsyn\ 8
+        set guifont=termsyn\ 8
     endif
 
     " Override font for work machine with nicer monitors...
