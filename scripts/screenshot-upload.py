@@ -7,6 +7,7 @@ Depends on:
     ssh (for scp)
     convert (for --shadow)
     xdg-open (for --launch)
+    requests (for imgur)
 
 Author: Alan Briolat <alan.briolat@gmail.com>
 """
@@ -93,8 +94,25 @@ class ScpUploader(Uploader):
         run(cmd)
 
 
+class ImgurUploader(Uploader):
+    def populate_subparser(self, parser):
+        parser.add_argument('apikey', help='imgur API key')
+
+    def upload(self, args, info):
+        import base64
+        import requests
+        url = 'http://api.imgur.com/2/upload.json'
+        image = base64.b64encode(open(info['path'], 'rb').read())
+        result = requests.post(url, data={'key': args.apikey,
+                                          'image': image})
+        image_url = result.json['upload']['links']['imgur_page']
+        print('uploaded to imgur:', image_url)
+        info['url'] = image_url
+
+
 UPLOADERS = [
     ('scp', 'copy files with scp', ScpUploader()),
+    ('imgur', 'upload to imgur', ImgurUploader()),
 ]
 
 
