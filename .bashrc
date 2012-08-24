@@ -5,6 +5,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# The git prompt stuff got moved...
+if [ -f /usr/share/git/git-prompt.sh ] ; then
+    . /usr/share/git/git-prompt.sh
+fi
+
 function pretty_prompt {
     local USE_COLOR
     local HOST_COLOR
