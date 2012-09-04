@@ -13,3 +13,9 @@
 	fontdiff = -family Termsyn -size 8 -weight normal -slant roman -underline 0 -overstrike 0
 [core]
 	excludesfile = /home/alan/.gitignore
+[tig "bind"]
+    # Rebind up/down arrows to be up/down, not prev/next
+    generic = Up none
+    generic = Down none
+    generic = Up move-up
+    generic = Down move-down
