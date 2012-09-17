@@ -5,9 +5,7 @@
 	name = Alan Briolat
 	email = alan.briolat@gmail.com
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+	ui = true
 [gui]
 	fontui = -family \"DejaVu Sans\" -size 8 -weight bold -slant roman -underline 0 -overstrike 0
 	fontdiff = -family Termsyn -size 8 -weight normal -slant roman -underline 0 -overstrike 0
