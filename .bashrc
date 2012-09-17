@@ -9,6 +9,10 @@
 if [ -f /usr/share/git/git-prompt.sh ] ; then
     . /usr/share/git/git-prompt.sh
 fi
+# (Mac OS X, brew install git)
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ] ; then
+    . $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+fi
 
 function pretty_prompt {
     local USE_COLOR
@@ -101,6 +105,10 @@ alias :wq='echo "lol, vim user..." ; sleep 1 ; exit'
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
+fi
+# (Mac OS X, brew install bash-completion)
+if [ "$(uname -s)" == "Darwin" ]; then
+    . $(brew --prefix)/etc/bash_completion
 fi
 
 export EDITOR=/usr/bin/vim
