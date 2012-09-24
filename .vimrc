@@ -63,10 +63,11 @@ if has("gui_running")
     set guioptions-=T
 
     " Set colorscheme
-    set background=dark
-    let g:solarized_italic=0
-    let g:solarized_hitrail=1
-    colorscheme solarized
+    "set background=dark
+    "let g:solarized_italic=0
+    "let g:solarized_hitrail=1
+    "colorscheme solarized
+    colorscheme Tomorrow-Night
 
     " Bind alt+number to tab switching
     map <M-1> 1gt
@@ -81,9 +82,10 @@ if has("gui_running")
 else
     "set t_Co=256
     set mouse=a         " Allow mouse interaction in terminals
-    set background=dark
-    let g:solarized_termcolors=256
-    colorscheme solarized
+    "set background=dark
+    "let g:solarized_termcolors=256
+    "colorscheme solarized
+    colorscheme Tomorrow-Night
 endif
 
 " Highlight column 80 as a reminder, as long as it's supported
