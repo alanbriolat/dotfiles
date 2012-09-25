@@ -36,4 +36,4 @@ URxvt.boldFont: -*-termsyn-bold-r-*-*-11-*-*-*-*-*-*-*,xft:Code2000:bold
 URxvt.perl-ext-common: default,matcher
 ! Configure URL matcher: open in google-chrome when clicked with middle button
 URxvt.urlLauncher: google-chrome
-URxvt.matcher.button: 2
+URxvt.matcher.button: 1
