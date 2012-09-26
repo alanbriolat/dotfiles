@@ -6,6 +6,8 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+-- Vicious widgets
+vicious = require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -145,6 +147,32 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+volumectrl = { widget = widget({ type = "textbox" }), control = "Master" }
+function volumectrl:toggle()
+    awful.util.spawn("amixer set " .. self.control .. " toggle", false)
+    vicious.force({ self.widget })
+end
+function volumectrl:raise()
+    awful.util.spawn("amixer set " .. self.control .. " 5%+", false)
+    vicious.force({ self.widget })
+end
+function volumectrl:lower()
+    awful.util.spawn("amixer set " .. self.control .. " 5%-", false)
+    vicious.force({ self.widget })
+end
+function volumectrl.update(widget, args)
+    local label = { ["♫"] = "%", ["♩"] = "M" }
+    return string.format("[vol:%02d%s]", args[1], label[args[2]])
+end
+
+vicious.register(volumectrl.widget, vicious.widgets.volume, volumectrl.update, 10, volumectrl.control)
+volumectrl.widget:buttons(awful.util.table.join(
+    awful.button({ }, 1, function () volumectrl:toggle() end),
+    awful.button({ }, 3, function () awful.util.spawn(terminal .. " -e alsamixer") end),
+    awful.button({ }, 4, function () volumectrl:raise() end),
+    awful.button({ }, 5, function () volumectrl:lower() end)
+))
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
@@ -177,6 +205,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
+        s == 2 and volumectrl.widget or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -229,9 +258,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ "Control", "Mod1" }, "Delete", function () awful.util.spawn("xscreensaver-command -lock") end),
-    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-", false) end),
-    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+", false) end),
-    awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle", false) end),
+    awful.key({}, "XF86AudioLowerVolume", function () volumectrl:lower() end),
+    awful.key({}, "XF86AudioRaiseVolume", function () volumectrl:raise() end),
+    awful.key({}, "XF86AudioMute", function () volumectrl:toggle() end),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
