@@ -224,10 +224,14 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+
     awful.key({ "Control", "Mod1" }, "Delete", function () awful.util.spawn("xscreensaver-command -lock") end),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-", false) end),
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+", false) end),
+    awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle", false) end),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
