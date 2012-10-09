@@ -83,7 +83,7 @@ else
     "set t_Co=256
     set mouse=a         " Allow mouse interaction in terminals
     set background=dark
-    let g:solarized_termcolors=256
+    "let g:solarized_termcolors=256
     colorscheme solarized
     "colorscheme Tomorrow-Night
 endif
