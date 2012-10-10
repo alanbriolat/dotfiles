@@ -262,6 +262,10 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioRaiseVolume", function () volumectrl:raise() end),
     awful.key({}, "XF86AudioMute", function () volumectrl:toggle() end),
 
+    awful.key({}, "Print", function () awful.util.spawn("xfce4-screenshooter --fullscreen") end),
+    awful.key({ "Mod1" }, "Print", function () awful.util.spawn("xfce4-screenshooter --window -o screenshot-upload-iris.sh") end),
+    awful.key({ "Mod1", "Shift" }, "Print", function () awful.util.spawn("xfce4-screenshooter --region -o screenshot-upload-iris.sh") end),
+
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
