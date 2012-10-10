@@ -9,8 +9,10 @@ URxvt.scrollBar: false
 
 ! Pretty bitmap font, fallback to TTF with very wide unicode coverage
 URxvt.font: -*-termsyn-medium-r-*-*-11-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-10-*-*-*-*-*-iso10646-1,xft:Code2000
-URxvt.boldFont: -*-termsyn-medium-r-*-*-11-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-10-*-*-*-*-*-iso10646-1,xft:Code2000
-!URxvt.boldFont: -*-termsyn-bold-r-*-*-11-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-10-*-*-*-*-*-iso10646-1,xft:Code2000:bold
+URxvt.boldFont: -*-termsyn-bold-r-*-*-11-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-10-*-*-*-*-*-iso10646-1,xft:Code2000:bold
+
+! Don't conflate boldness and brightness
+URxvt.intensityStyles: false
 
 URxvt.perl-ext-common: default,matcher
 ! Configure URL matcher: open in google-chrome when clicked with middle button
