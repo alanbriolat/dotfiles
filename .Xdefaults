@@ -3,30 +3,8 @@
 !##############################
 
 URxvt.depth: 32
-URxvt.background: [85]Black
-URxvt.foreground: 15
-!URxvt.fading: 20
 URxvt.geometry: 100x30
 URxvt.iconFile: /usr/share/icons/hicolor/scalable/apps/Terminal.svg
-
-! Tango colorscheme
-URxvt.color0: #2e2e34343636
-URxvt.color1: #cccc00000000
-URxvt.color2: #4e4e9a9a0606
-URxvt.color3: #c4c4a0a00000
-URxvt.color4: #34346565a4a4
-URxvt.color5: #757550507b7b
-URxvt.color6: #060698989a9a
-URxvt.color7: #d3d3d7d7cfcf
-URxvt.color8: #555557575353
-URxvt.color9: #efef29292929
-URxvt.color10: #8a8ae2e23434
-URxvt.color11: #fcfce9e94f4f
-URxvt.color12: #72729f9fcfcf
-URxvt.color13: #adad7f7fa8a8
-URxvt.color14: #3434e2e2e2e2
-URxvt.color15: #eeeeeeeeecec
-
 URxvt.scrollBar: false
 
 ! Pretty bitmap font, fallback to TTF with very wide unicode coverage
@@ -37,3 +15,37 @@ URxvt.perl-ext-common: default,matcher
 ! Configure URL matcher: open in google-chrome when clicked with middle button
 URxvt.urlLauncher: google-chrome
 URxvt.matcher.button: 1
+
+
+! Solarized colorscheme, from: https://github.com/altercation/solarized/
+*background: #002b36
+*foreground: #839496
+*fading: 40
+*fadeColor: #002b36
+*cursorColor: #93a1a1
+*pointerColorBackground:#586e75
+*pointerColorForeground:#93a1a1
+!! black dark/light
+*color0: #073642
+*color8: #002b36
+!! red dark/light
+*color1: #dc322f
+*color9: #cb4b16
+!! green dark/light
+*color2: #859900
+*color10: #586e75
+!! yellow dark/light
+*color3: #b58900
+*color11: #657b83
+!! blue dark/light
+*color4: #268bd2
+*color12: #839496
+!! magenta dark/light
+*color5: #d33682
+*color13: #6c71c4
+!! cyan dark/light
+*color6: #2aa198
+*color14: #93a1a1
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
