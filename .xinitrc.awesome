@@ -20,6 +20,9 @@ export GPG_AGENT_INFO
 export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 
+# Work around Java being dumb in the face on non-reparenting WMs
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Autostart some stuff
 xscreensaver -no-splash &
 dropboxd &
