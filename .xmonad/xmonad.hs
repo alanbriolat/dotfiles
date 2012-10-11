@@ -8,6 +8,10 @@
 --
 
 import XMonad
+import XMonad.Layout.Combo
+import XMonad.Layout.Tabbed
+import XMonad.Layout.TwoPane
+import XMonad.Layout.WindowNavigation
 import Data.Monoid
 import System.Exit
 
@@ -17,7 +21,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "xterm"
+myTerminal      = "Terminal"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -32,7 +36,8 @@ myBorderWidth   = 1
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask       = mod1Mask
+myModMask       = mod4Mask
+altMask = mod1Mask
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -56,10 +61,10 @@ myFocusedBorderColor = "#ff0000"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm,               xK_t     ), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((modm,               xK_r     ), spawn "dmenu_run")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -104,7 +109,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_l     ), sendMessage Expand)
 
     -- Push window back into tiling
-    , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+    , ((modm .|. shiftMask, xK_Return ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
     , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
@@ -123,6 +128,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    -- Lock xscreensaver
+    , ((controlMask .|. altMask, xK_Delete), spawn "xscreensaver-command -lock")
     ]
     ++
 
@@ -139,9 +147,28 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
-    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    --[((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+    --    | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+    --    , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    -- ++
+    
+    -- Window navigation
+    [ ((modm, xK_Left), sendMessage $ Go L)
+    , ((modm, xK_Right), sendMessage $ Go R)
+    , ((modm, xK_Up), sendMessage $ Go U)
+    , ((modm, xK_Down), sendMessage $ Go D)
+    , ((modm .|. controlMask, xK_Left), sendMessage $ Swap L)
+    , ((modm .|. controlMask, xK_Right), sendMessage $ Swap R)
+    , ((modm .|. controlMask, xK_Up), sendMessage $ Swap U)
+    , ((modm .|. controlMask, xK_Down), sendMessage $ Swap D)
+    , ((modm .|. controlMask .|. shiftMask, xK_Left), sendMessage $ Move L)
+    , ((modm .|. controlMask .|. shiftMask, xK_Right), sendMessage $ Move R)
+    , ((modm .|. controlMask .|. shiftMask, xK_Up), sendMessage $ Move U)
+    , ((modm .|. controlMask .|. shiftMask, xK_Down), sendMessage $ Move D)
+    ]
+    ++
+
+    []
 
 
 ------------------------------------------------------------------------
@@ -174,19 +201,19 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+--myLayout = tiled ||| tablayout ||| Mirror tiled ||| simpleTabbedAlways
+myLayout = tiled ||| tablayout ||| simpleTabbedAlways
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
-
+     tiled   = windowNavigation $ Tall nmaster delta ratio
      -- The default number of windows in the master pane
      nmaster = 1
-
      -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
-
+     ratio   = 3/4
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
+
+     tablayout = windowNavigation $ combineTwo (TwoPane delta ratio) (tabbed shrinkText defaultTheme) (tabbed shrinkText defaultTheme)
 
 ------------------------------------------------------------------------
 -- Window rules:
