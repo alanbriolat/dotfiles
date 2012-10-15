@@ -1,0 +1,6 @@
+#!/bin/bash
+
+IMAGE=/boot/initramfs-linux.img
+KERNEL=/boot/vmlinuz-linux
+
+exec kexec --type=bzImage --reuse-cmdline --initrd=$IMAGE $KERNEL
