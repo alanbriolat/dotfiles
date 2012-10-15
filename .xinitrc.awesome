@@ -23,6 +23,11 @@ export GNOME_KEYRING_PID
 # Work around Java being dumb in the face on non-reparenting WMs
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# Make GTK apps use xim, not scim
+export GTK_IM_MODULE=xim
+# And likewise for Qt
+export QT_IM_MODULE=xim
+
 # Autostart some stuff
 xscreensaver -no-splash &
 dropboxd &

@@ -1,2 +1,3 @@
 xset +fp ~/.fonts
+setxkbmap -option compose:ralt
 [ -f ~/.xprofile_local ] && . ~/.xprofile_local
