@@ -28,6 +28,9 @@ export GTK_IM_MODULE=xim
 # And likewise for Qt
 export QT_IM_MODULE=xim
 
+# Google browser is best browser
+export BROWSER=google-chrome
+
 # Autostart some stuff
 xscreensaver -no-splash &
 dropboxd &
