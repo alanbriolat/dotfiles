@@ -1,8 +1,7 @@
 #!/usr/bin/env python2
 """Move files and symbolically link them back to their original locations.
 
-Depends on Python 2, the docopt module, and coreutils >= 8 (for the --relative
-option to ln).
+Depends on Python 2 and the docopt module.
 
 Usage:
   symmv.py [options] SOURCE DEST
@@ -36,7 +35,11 @@ def move_single(source, dest, dryrun):
             'probably break it').format(source))
 
     run(['mv', source, dest], dryrun)
-    run(['ln', '--symbolic', '--relative', dest, source], dryrun)
+    # This method is preferred but requires a coreutils >= 8.16
+    #run(['ln', '--symbolic', '--relative', dest, source], dryrun)
+    # This method will have to do for old crusty OSs
+    run(['ln', '--symbolic', os.path.relpath(dest, os.path.dirname(source)),
+         source], dryrun)
 
 
 def move_multiple(sources, dest, dryrun):
@@ -48,7 +51,6 @@ def move_multiple(sources, dest, dryrun):
 
 if __name__ == '__main__':
     args = docopt(__doc__)
-    print(args)
     if args['-t']:
         move_multiple(args['SOURCE'], args['DIRECTORY'], args['--dry-run'])
     else:
