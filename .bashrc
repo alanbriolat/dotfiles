@@ -95,6 +95,11 @@ alias sudo='sudo '
 alias rm='rm -v'
 alias :wq='echo "lol, vim user..." ; sleep 1 ; exit'
 
+alias df='df --si'
+alias du='du --si'
+alias du0='du --si --max-depth=0'
+alias du1='du --si --max-depth=1'
+
 # some more ls aliases
 #alias ll='ls -l'
 #alias la='ls -A'
