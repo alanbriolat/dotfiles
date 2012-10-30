@@ -118,13 +118,6 @@ fi
 
 export EDITOR=/usr/bin/vim
 
-# If we're in tmux and have 256color support, set an appropriate TERM
-case "$TMUX_CONTAINING_TERM" in
-    *256color)
-        TERM=screen-256color
-        ;;
-esac
-
 # pretty prompt, uncolored - use "pretty_prompt color <host_color> <path_color>"
 # to make it prettier
 pretty_prompt
