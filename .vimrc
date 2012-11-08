@@ -82,6 +82,7 @@ if has("gui_running")
 else
     "set t_Co=256
     set mouse=a         " Allow mouse interaction in terminals
+    set ttymouse=xterm2 " Seems to stop mouse interaction breaking inside tmux
     set background=dark
     "let g:solarized_termcolors=256
     colorscheme solarized
