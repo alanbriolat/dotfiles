@@ -16,7 +16,7 @@ URxvt.intensityStyles: false
 
 URxvt.perl-ext-common: default,matcher
 ! Configure URL matcher: open in google-chrome when clicked with middle button
-URxvt.urlLauncher: google-chrome
+URxvt.url-launcher: google-chrome
 URxvt.matcher.button: 1
 
 
