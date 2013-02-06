@@ -17,3 +17,5 @@
     generic = Down none
     generic = Up move-up
     generic = Down move-down
+[push]
+	default = simple
