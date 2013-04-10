@@ -9,6 +9,7 @@
 [gui]
 	fontui = -family \"DejaVu Sans\" -size 8 -weight bold -slant roman -underline 0 -overstrike 0
 	fontdiff = -family Termsyn -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+	editor = gvim
 [core]
 	excludesfile = /home/alan/.gitignore
 [tig "bind"]
@@ -17,3 +18,5 @@
     generic = Down none
     generic = Up move-up
     generic = Down move-down
+[push]
+	default = simple
