@@ -3,18 +3,29 @@ snippet mod module ... contains ... end module
 
 		${2}
 
+		implicit none
+		private
+
 	contains
 
-
+	${3}
 
 	end module $1
-
 snippet sub subroutine ... end subroutine
 	subroutine ${1:}(${2})
 		${3}
 	end subroutine $1
-
 snippet fun function ... end function
 	function ${1:}(${2}) result(${3})
 		${4}
 	end function $1
+snippet select select case ... end select
+	select case (${1})
+		${2}
+	end select
+snippet type type ... end type
+	type :: ${1:}
+		${2}
+	end type $1
+snippet cstr character(kind=c_char,len=?)
+	character(kind=c_char,len=${1}) :: ${2}

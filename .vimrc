@@ -91,7 +91,7 @@ endif
 
 " Highlight column 80 as a reminder, as long as it's supported
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=+1
 endif
 
 
