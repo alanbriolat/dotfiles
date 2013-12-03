@@ -1,6 +1,7 @@
 [alias]
 	st = status
 	co = checkout
+	tracked-but-ignored = ls-files -i --exclude-standard
 [user]
 	name = Alan Briolat
 	email = alan.briolat@gmail.com
