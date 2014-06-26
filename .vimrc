@@ -111,6 +111,7 @@ let fortran_free_source=1
 
 " Configure NERDTree
 let NERDTreeShowBookmarks = 1
+let NERDTreeRespectWildIgnore = 1
 
 " Globally hide certain files
 set wildignore+=*.pyc,*.o,*.mod
