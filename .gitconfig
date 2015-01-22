@@ -2,7 +2,7 @@
 	st = status
 	co = checkout
 	tracked-but-ignored = ls-files -i --exclude-standard
-	tree = log --graph --decorate --oneline
+	tree = log --graph --pretty=format:'%C(auto)%h%d %s%Creset %Cblue(%cd)%Creset %Cgreen<%an>%Creset' --date=relative
 [user]
 	name = Alan Briolat
 	email = alan.briolat@gmail.com
