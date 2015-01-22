@@ -2,6 +2,7 @@
 	st = status
 	co = checkout
 	tracked-but-ignored = ls-files -i --exclude-standard
+	tree = log --graph --oneline
 [user]
 	name = Alan Briolat
 	email = alan.briolat@gmail.com
