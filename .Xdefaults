@@ -8,8 +8,12 @@ URxvt.iconFile: /usr/share/icons/hicolor/scalable/apps/Terminal.svg
 URxvt.scrollBar: false
 
 ! Pretty bitmap font, fallback to TTF with very wide unicode coverage
-URxvt.font: -*-termsyn-medium-r-*-*-11-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-10-*-*-*-*-*-iso10646-1,xft:Code2000
-URxvt.boldFont: -*-termsyn-bold-r-*-*-11-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-10-*-*-*-*-*-iso10646-1,xft:Code2000:bold
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=11:regular,xft:Code2000
+URxvt.boldFont: xft:DejaVu Sans Mono:pixelsize=11:bold,xft:Code2000:bold
+URxvt.italicFont: xft:DejaVu Sans Mono:pixelsize=11:italic,xft:Code2000:italic
+URxvt.boldItalicFont: xft:DejaVu Sans Mono:pixelsize=11:bold:italic,xft:Code2000:bold:italic
+!URxvt.font: -*-termsyn-medium-r-*-*-14-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-1,xft:Code2000
+!URxvt.boldFont: -*-termsyn-bold-r-*-*-14-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-1,xft:Code2000:bold
 
 ! Don't conflate boldness and brightness
 URxvt.intensityStyles: false
