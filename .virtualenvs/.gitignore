@@ -1,0 +1,2 @@
+# Ignore virtualenv directories (but keep hooks)
+/*/
