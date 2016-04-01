@@ -1,1 +1,1 @@
-gem: --user-install --no-rdoc --no-ri
+gem: --user-install --no-rdoc --no-ri --bindir ~/.local/bin
