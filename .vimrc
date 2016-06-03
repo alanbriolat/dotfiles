@@ -65,10 +65,11 @@ if has("gui_running")
 
     " Set colorscheme
     set background=dark
-    let g:solarized_italic=0
-    let g:solarized_hitrail=1
-    colorscheme solarized
+    "let g:solarized_italic=0
+    "let g:solarized_hitrail=1
+    "colorscheme solarized
     "colorscheme Tomorrow-Night
+    colorscheme base16-tomorrow
 
     " Bind alt+number to tab switching
     map <M-1> 1gt
@@ -86,8 +87,9 @@ else
     set ttymouse=xterm2 " Seems to stop mouse interaction breaking inside tmux
     set background=dark
     "let g:solarized_termcolors=256
-    colorscheme solarized
+    "colorscheme solarized
     "colorscheme Tomorrow-Night
+    colorscheme base16-tomorrow
 endif
 
 " Highlight column 80 as a reminder, as long as it's supported
