@@ -69,7 +69,7 @@ if has("gui_running")
     "let g:solarized_hitrail=1
     "colorscheme solarized
     "colorscheme Tomorrow-Night
-    colorscheme base16-tomorrow
+    colorscheme base16-eighties
 
     " Bind alt+number to tab switching
     map <M-1> 1gt
@@ -89,7 +89,7 @@ else
     "let g:solarized_termcolors=256
     "colorscheme solarized
     "colorscheme Tomorrow-Night
-    colorscheme base16-tomorrow
+    colorscheme base16-eighties
 endif
 
 " Highlight column 80 as a reminder, as long as it's supported

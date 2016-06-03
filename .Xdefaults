@@ -59,22 +59,40 @@ URxvt.matcher.button: 1
 
 
 !! https://github.com/chriskempson/base16-xresources/blob/master/base16-tomorrow.dark.xresources
-#define base00 #1d1f21
-#define base01 #282a2e
-#define base02 #373b41
-#define base03 #969896
-#define base04 #b4b7b4
-#define base05 #c5c8c6
-#define base06 #e0e0e0
-#define base07 #ffffff
-#define base08 #cc6666
-#define base09 #de935f
-#define base0A #f0c674
-#define base0B #b5bd68
-#define base0C #8abeb7
-#define base0D #81a2be
-#define base0E #b294bb
-#define base0F #a3685a
+!!#define base00 #1d1f21
+!!#define base01 #282a2e
+!!#define base02 #373b41
+!!#define base03 #969896
+!!#define base04 #b4b7b4
+!!#define base05 #c5c8c6
+!!#define base06 #e0e0e0
+!!#define base07 #ffffff
+!!#define base08 #cc6666
+!!#define base09 #de935f
+!!#define base0A #f0c674
+!!#define base0B #b5bd68
+!!#define base0C #8abeb7
+!!#define base0D #81a2be
+!!#define base0E #b294bb
+!!#define base0F #a3685a
+
+!! https://github.com/chriskempson/base16-xresources/blob/master/base16-eighties.dark.xresources
+#define base00 #2d2d2d
+#define base01 #393939
+#define base02 #515151
+#define base03 #747369
+#define base04 #a09f93
+#define base05 #d3d0c8
+#define base06 #e8e6df
+#define base07 #f2f0ec
+#define base08 #f2777a
+#define base09 #f99157
+#define base0A #ffcc66
+#define base0B #99cc99
+#define base0C #66cccc
+#define base0D #6699cc
+#define base0E #cc99cc
+#define base0F #d27b53
 
 !! Mapping for base16 colourschemes
 URxvt.foreground:   base05
