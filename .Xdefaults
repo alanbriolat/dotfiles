@@ -100,6 +100,8 @@ URxvt.background:   base00
 URxvt.cursorColor:  base05
 URxvt.fading:       40
 URxvt.fadeColor:    base00
+URxvt.highlightTextColor: base00
+URxvt.highlightColor: base05
 
 URxvt.color0:       base00
 URxvt.color1:       base08
