@@ -64,12 +64,12 @@ if has("gui_running")
     set guioptions-=T
 
     " Set colorscheme
-    set background=dark
+    "set background=dark
     "let g:solarized_italic=0
     "let g:solarized_hitrail=1
     "colorscheme solarized
     "colorscheme Tomorrow-Night
-    colorscheme base16-eighties
+    "colorscheme base16-eighties
 
     " Bind alt+number to tab switching
     map <M-1> 1gt
@@ -85,11 +85,18 @@ else
     "set t_Co=256
     set mouse=a         " Allow mouse interaction in terminals
     set ttymouse=xterm2 " Seems to stop mouse interaction breaking inside tmux
-    set background=dark
+    "set background=dark
     "let g:solarized_termcolors=256
     "colorscheme solarized
     "colorscheme Tomorrow-Night
-    colorscheme base16-eighties
+    "colorscheme base16-eighties
+endif
+
+" Set colorscheme
+set background=dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
 endif
 
 " Highlight column 80 as a reminder, as long as it's supported
