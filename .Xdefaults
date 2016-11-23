@@ -16,7 +16,7 @@ URxvt.boldItalicFont: xft:DejaVu Sans Mono:pixelsize=11:bold:italic,xft:Code2000
 !URxvt.boldFont: -*-termsyn-bold-r-*-*-14-*-*-*-*-*-*-*,-*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-1,xft:Code2000:bold
 
 ! Don't conflate boldness and brightness
-URxvt.intensityStyles: false
+!URxvt.intensityStyles: false
 
 URxvt.perl-ext-common: default,matcher
 ! Configure URL matcher: open in google-chrome when clicked with middle button
@@ -95,28 +95,28 @@ URxvt.matcher.button: 1
 #define base0F #d27b53
 
 !! Mapping for base16 colourschemes
-URxvt.foreground:   base05
-URxvt.background:   base00
-URxvt.cursorColor:  base05
-URxvt.fading:       40
-URxvt.fadeColor:    base00
-URxvt.highlightTextColor: base00
-URxvt.highlightColor: base05
+!URxvt.foreground:   base05
+!URxvt.background:   base00
+!URxvt.cursorColor:  base05
+!URxvt.fading:       40
+!URxvt.fadeColor:    base00
+!URxvt.highlightTextColor: base00
+!URxvt.highlightColor: base05
 
-URxvt.color0:       base00
-URxvt.color1:       base08
-URxvt.color2:       base0B
-URxvt.color3:       base0A
-URxvt.color4:       base0D
-URxvt.color5:       base0E
-URxvt.color6:       base0C
-URxvt.color7:       base05
+!URxvt.color0:       base00
+!URxvt.color1:       base08
+!URxvt.color2:       base0B
+!URxvt.color3:       base0A
+!URxvt.color4:       base0D
+!URxvt.color5:       base0E
+!URxvt.color6:       base0C
+!URxvt.color7:       base05
 
-URxvt.color8:       base03
-URxvt.color9:       base09
-URxvt.color10:      base01
-URxvt.color11:      base02
-URxvt.color12:      base04
-URxvt.color13:      base06
-URxvt.color14:      base0F
-URxvt.color15:      base07
+!URxvt.color8:       base03
+!URxvt.color9:       base09
+!URxvt.color10:      base01
+!URxvt.color11:      base02
+!URxvt.color12:      base04
+!URxvt.color13:      base06
+!URxvt.color14:      base0F
+!URxvt.color15:      base07
