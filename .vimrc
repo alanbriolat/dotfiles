@@ -47,7 +47,7 @@ augroup END
 if has("gui_running")
     " Set font
     if has("win32")
-        set guifont=Tamsyn6x11:h9:cOEM
+        set guifont=DejaVu_Sans_Mono:h8:cANSI:qDRAFT
     else
         set guifont=Dejavu\ Sans\ Mono\ 8
         "set guifont=Tamsyn\ 8
@@ -70,6 +70,9 @@ if has("gui_running")
     "colorscheme solarized
     "colorscheme Tomorrow-Night
     "colorscheme base16-eighties
+    if has("win32")
+        colorscheme base16-tomorrow-night
+    endif
 
     " Bind alt+number to tab switching
     map <M-1> 1gt
