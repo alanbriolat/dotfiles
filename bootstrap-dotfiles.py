@@ -61,7 +61,7 @@ class Config:
         dest = self.dest / dest
         self._ensure_directory(dest.parent)
         log.info('Creating {} symlink {} -> {}'
-                 .format('relative' if self.relative_symlinks else 'absolute', src, dest))
+                 .format('relative' if self.relative_symlinks else 'absolute', dest, src))
         cmd = ['ln', '-s', '-T']
         if self.relative_symlinks:
             cmd += ['-r']
