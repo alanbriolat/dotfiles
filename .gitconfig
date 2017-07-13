@@ -22,3 +22,5 @@
     generic = Down move-down
 [push]
 	default = simple
+[include]
+    path = ~/.gitconfig-local
