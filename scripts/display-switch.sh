@@ -45,9 +45,9 @@ case "$LAYOUT" in
         ;;
     own_plus_dual_home)
         XRANDR="
-        --output $OUTPUT_LEFT --auto --rotate left --pos 0x0
-        --output $OUTPUT_CENTRE --auto --primary --pos 1440x80
-        --output $OUTPUT_OWN --auto --pos 2400x2240
+        --output $OUTPUT_LEFT --auto --pos 0x0
+        --output $OUTPUT_CENTRE --auto --primary --pos 2560x0
+        --output $OUTPUT_OWN --auto --pos 3520x2160
         "
         PANEL_ON="monitor-1"     # "automatic"
         ;;
