@@ -5,7 +5,7 @@
 	tree = log --graph --pretty=format:'%C(auto)%h%d %s%Creset %Cblue(%cd)%Creset %Cgreen<%an>%Creset' --date=relative
 [user]
 	name = Alan Briolat
-	email = alan.briolat@gmail.com
+	email = alan@briol.at
 [color]
 	ui = true
 [gui]
@@ -24,3 +24,5 @@
 	default = simple
 [include]
     path = ~/.gitconfig-local
+[init]
+	defaultBranch = main
